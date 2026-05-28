@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عيد أضحى مبارك — جدو مصطفى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #ff6b8a;
+      --coral-dark: #e84d6f;
+      --gold: #ffc93c;
+      --mint: #6ee7b7;
+      --sky: #7dd3fc;
+      --lavender: #c4b5fd;
+      --cream: #fff9f0;
+      --ink: #2d1b4e;
+      /* Responsive scale — mobile first */
+      --scene-max: 100%;
+      --envelope-w: clamp(260px, 88vw, 320px);
+      --envelope-h: clamp(175px, 58vw, 220px);
+      --letter-w: clamp(250px, 86vw, 300px);
+      --letter-max-h: min(72vh, 360px);
+      --seal-size: clamp(48px, 13vw, 56px);
+      --paper-pad: clamp(1.25rem, 4vw, 1.75rem);
+      --radius: clamp(8px, 2vw, 12px);
+      --text-hint: clamp(0.9rem, 3.5vw, 1rem);
+      --text-message: clamp(1.2rem, 5vw, 1.55rem);
+      --text-signature: clamp(0.95rem, 3.5vw, 1.1rem);
+      --text-label: clamp(0.85rem, 3vw, 0.95rem);
+      --text-ornament: clamp(1.25rem, 4vw, 1.5rem);
+    }
+
+    @media (min-width: 640px) {
+      :root {
+        --scene-max: 540px;
+        --envelope-w: clamp(360px, 52vw, 440px);
+        --envelope-h: clamp(248px, 36vw, 300px);
+        --letter-w: clamp(340px, 50vw, 420px);
+        --letter-max-h: min(75vh, 440px);
+        --seal-size: clamp(56px, 8vw, 68px);
+        --paper-pad: clamp(1.5rem, 3vw, 2rem);
+        --radius: 14px;
+        --text-hint: clamp(1rem, 2vw, 1.15rem);
+        --text-message: clamp(1.45rem, 3.5vw, 1.9rem);
+        --text-signature: clamp(1.05rem, 2vw, 1.25rem);
+        --text-label: clamp(0.95rem, 1.8vw, 1.1rem);
+        --text-ornament: clamp(1.5rem, 2.5vw, 1.85rem);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      :root {
+        --scene-max: 720px;
+        --envelope-w: clamp(480px, 42vw, 580px);
+        --envelope-h: clamp(330px, 30vw, 400px);
+        --letter-w: clamp(460px, 40vw, 560px);
+        --letter-max-h: min(80vh, 560px);
+        --seal-size: clamp(68px, 6vw, 80px);
+        --paper-pad: clamp(2rem, 2.5vw, 2.75rem);
+        --radius: 16px;
+        --text-hint: 1.2rem;
+        --text-message: clamp(1.75rem, 2.2vw, 2.35rem);
+        --text-signature: clamp(1.2rem, 1.6vw, 1.45rem);
+        --text-label: 1.2rem;
+        --text-ornament: 2rem;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      :root {
+        --scene-max: 800px;
+        --envelope-w: 600px;
+        --envelope-h: 420px;
+        --letter-w: 580px;
+        --letter-max-h: 600px;
+        --seal-size: 84px;
+        --text-message: 2.5rem;
+        --text-signature: 1.5rem;
+      }
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(160deg, #ffe8f0 0%, #fff4d6 35%, #e0f7fa 70%, #ede9fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 2.5rem);
+    }
+
+    /* Floating cheerful shapes */
+    .bg-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.35;
+      animation: float-shape 8s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) { width: 120px; height: 120px; background: var(--coral); top: 8%; left: 5%; animation-delay: 0s; }
+    .shape:nth-child(2) { width: 80px; height: 80px; background: var(--gold); top: 70%; right: 8%; animation-delay: 1.5s; }
+    .shape:nth-child(3) { width: 100px; height: 100px; background: var(--mint); bottom: 15%; left: 12%; animation-delay: 3s; }
+    .shape:nth-child(4) { width: 60px; height: 60px; background: var(--sky); top: 25%; right: 18%; animation-delay: 2s; }
+    .shape:nth-child(5) { width: 90px; height: 90px; background: var(--lavender); top: 50%; left: 75%; animation-delay: 4s; }
+
+    @keyframes float-shape {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.08); }
+    }
+
+    .scene {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: var(--scene-max);
+      min-height: min(70vh, 100%);
+      justify-content: center;
+      gap: 0;
+    }
+
+    .scene.opened {
+      justify-content: flex-start;
+      padding-top: clamp(0.75rem, 2vw, 1.5rem);
+      padding-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    @media (min-width: 1024px) {
+      .scene.opened {
+        justify-content: center;
+        padding-top: 2rem;
+      }
+    }
+
+    .hint {
+      font-size: var(--text-hint);
+      font-weight: 600;
+      color: var(--ink);
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+      animation: hint-pulse 2s ease-in-out infinite;
+      transition: opacity 0.4s;
+    }
+
+    .scene.opened .hint {
+      display: none;
+    }
+
+    @keyframes hint-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.65; }
+      50% { transform: scale(1.02); opacity: 0.95; }
+    }
+
+    .envelope-stage {
+      position: relative;
+      width: var(--envelope-w);
+      height: var(--envelope-h);
+      flex-shrink: 0;
+      order: 1;
+      perspective: min(1200px, 100vw);
+      transform-style: preserve-3d;
+      cursor: pointer;
+      animation: envelope-idle 3s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .scene.opened .envelope-stage {
+      overflow: visible;
+      order: 2;
+      margin-top: 0.25rem;
+    }
+
+    .scene.opened .envelope-stage {
+      animation: none;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    @keyframes envelope-idle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .envelope {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    /* Letter — hidden until envelope opens, then appears above it */
+    .letter-slot {
+      width: var(--letter-w);
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      order: 2;
+      transform: translateY(24px) scale(0.96);
+      transition:
+        max-height 0.85s cubic-bezier(0.34, 1.2, 0.64, 1),
+        opacity 0.45s ease 0.15s,
+        transform 0.85s cubic-bezier(0.34, 1.2, 0.64, 1),
+        visibility 0s linear 0.85s;
+      pointer-events: none;
+    }
+
+    .scene.opened .letter-slot {
+      max-height: var(--letter-max-h);
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      order: 0;
+      margin-bottom: clamp(1rem, 3vw, 2rem);
+      pointer-events: auto;
+      transition:
+        max-height 0.85s cubic-bezier(0.34, 1.2, 0.64, 1),
+        opacity 0.5s ease 0.2s,
+        transform 0.85s cubic-bezier(0.34, 1.2, 0.64, 1),
+        visibility 0s;
+    }
+
+    .letter-paper {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: var(--paper-pad) calc(var(--paper-pad) * 0.9) calc(var(--paper-pad) * 0.85);
+      box-shadow:
+        0 12px 40px rgba(45, 27, 78, 0.15),
+        0 0 0 3px var(--gold),
+        0 0 0 6px rgba(255, 107, 138, 0.25);
+      border: 2px solid rgba(255, 201, 60, 0.5);
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .letter-ornament {
+      text-align: center;
+      font-size: var(--text-ornament);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3em;
+    }
+
+    .letter-message {
+      font-size: var(--text-message);
+      font-weight: 800;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1.75;
+      animation: message-in 0.8s ease-out 0.9s both;
+    }
+
+    @keyframes message-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter-signature {
+      margin-top: 1.25rem;
+      text-align: left;
+      direction: rtl;
+      font-size: var(--text-signature);
+      font-weight: 700;
+      color: var(--coral-dark);
+      animation: message-in 0.8s ease-out 1.2s both;
+    }
+
+    .letter-signature .love {
+      display: block;
+      font-size: calc(var(--text-signature) * 0.82);
+      font-weight: 600;
+      color: #9b7ec8;
+      margin-top: 0.2rem;
+    }
+
+    /* Envelope body */
+    .env-back {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #ff8fa8 0%, var(--coral) 50%, var(--coral-dark) 100%);
+      border-radius: var(--radius) var(--radius) calc(var(--radius) + 2px) calc(var(--radius) + 2px);
+      box-shadow: 0 20px 50px rgba(232, 77, 111, 0.35);
+      z-index: 2;
+    }
+
+    .env-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72%;
+      background: linear-gradient(180deg, #ff7a96 0%, var(--coral-dark) 100%);
+      clip-path: polygon(0 35%, 50% 0, 100% 35%, 100% 100%, 0 100%);
+      z-index: 4;
+      border-radius: 0 0 calc(var(--radius) + 2px) calc(var(--radius) + 2px);
+    }
+
+    .env-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58%;
+      background: linear-gradient(180deg, #ffa8bc 0%, var(--coral) 100%);
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top center;
+      transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+      backface-visibility: hidden;
+    }
+
+    .scene.opened .env-flap {
+      transform: rotateX(-175deg);
+    }
+
+    .env-fold-left,
+    .env-fold-right {
+      position: absolute;
+      bottom: 0;
+      width: 52%;
+      height: 55%;
+      z-index: 3;
+      opacity: 0.85;
+    }
+
+    .env-fold-left {
+      left: 0;
+      background: linear-gradient(135deg, #ff6b8a 0%, #e84d6f 100%);
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+      border-radius: 0 0 0 calc(var(--radius) + 2px);
+    }
+
+    .env-fold-right {
+      right: 0;
+      background: linear-gradient(225deg, #ff6b8a 0%, #e84d6f 100%);
+      clip-path: polygon(100% 0, 0 100%, 100% 100%);
+      border-radius: 0 0 calc(var(--radius) + 2px) 0;
+    }
+
+    /* Wax seal + lock */
+    .seal {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--seal-size);
+      height: var(--seal-size);
+      background: radial-gradient(circle at 35% 30%, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 4px 12px rgba(201, 24, 74, 0.5),
+        inset 0 2px 4px rgba(255,255,255,0.25);
+      transition: transform 0.5s, opacity 0.4s;
+      animation: seal-pulse 2s ease-in-out infinite;
+    }
+
+    .seal::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 201, 60, 0.6);
+      animation: seal-ring 3s linear infinite;
+    }
+
+    @keyframes seal-pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.06); }
+    }
+
+    @keyframes seal-ring {
+      to { transform: rotate(360deg); }
+    }
+
+    .seal-icon {
+      font-size: calc(var(--seal-size) * 0.42);
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+    }
+
+    .scene.opened .seal {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.3);
+      pointer-events: none;
+    }
+
+    /* Sparkles on open */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .scene.opened ~ .confetti-burst .confetti,
+    .confetti-burst.active .confetti {
+      animation: confetti-fall 1.2s ease-out forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(120px) rotate(540deg); }
+    }
+
+    .label-front {
+      position: absolute;
+      bottom: clamp(12px, 4%, 22px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 7;
+      font-weight: 700;
+      font-size: var(--text-label);
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .scene.opened .label-front { opacity: 0; }
+
+    /* Hearts float after open */
+    .hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+    }
+
+    .scene.opened .hearts {
+      opacity: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: heart-rise 2.5s ease-out infinite;
+      opacity: 0;
+    }
+
+    .scene.opened .heart {
+      opacity: 0.7;
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-delay: 0.2s; }
+    .heart:nth-child(2) { left: 30%; animation-delay: 0.6s; }
+    .heart:nth-child(3) { right: 25%; animation-delay: 1s; }
+    .heart:nth-child(4) { right: 8%; animation-delay: 1.4s; }
+
+    @keyframes heart-rise {
+      0% { transform: translateY(80px) scale(0.5); opacity: 0; }
+      30% { opacity: 0.8; }
+      100% { transform: translateY(-60px) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <span class="shape"></span>
+    <span class="shape"></span>
+    <span class="shape"></span>
+    <span class="shape"></span>
+    <span class="shape"></span>
+  </div>
+
+  <div class="scene" id="scene">
+    <p class="hint" id="hint">اضغط على الظرف لفتحه 🔒</p>
+
+    <div class="letter-slot" id="letterSlot" aria-hidden="true">
+      <div class="letter-paper">
+        <div class="letter-ornament">✦ 👶 ✦</div>
+        <p class="letter-message">
+          عيد أضحى مبارك<br>
+          يا جدو مصطفى
+        </p>
+        <div class="letter-signature">
+          نونو زياد و آيه
+          <span class="love">مع حبنا الكبير 💗</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="envelope-stage"
+      id="envelope"
+      role="button"
+      tabindex="0"
+      aria-label="ظرف مغلق — اضغط لفتحه"
+    >
+      <div class="hearts" aria-hidden="true">
+        <span class="heart">💛</span>
+        <span class="heart">✨</span>
+        <span class="heart">🎉</span>
+        <span class="heart">💛</span>
+      </div>
+
+      <div class="envelope">
+        <div class="env-back"></div>
+        <div class="env-fold-left"></div>
+        <div class="env-fold-right"></div>
+        <div class="env-pocket"></div>
+        <div class="env-flap"></div>
+
+        <div class="seal" aria-hidden="true">
+          <span class="seal-icon">🔒</span>
+        </div>
+
+        <span class="label-front">لـ جدو مصطفى</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti-burst" id="confetti" aria-hidden="true"></div>
+
+  <script>
+    const scene = document.getElementById('scene');
+    const envelope = document.getElementById('envelope');
+    const confettiRoot = document.getElementById('confetti');
+    let opened = false;
+
+    const confettiColors = ['#ff6b8a', '#ffc93c', '#6ee7b7', '#7dd3fc', '#c4b5fd'];
+
+    function burstConfetti() {
+      confettiRoot.classList.add('active');
+      confettiRoot.innerHTML = '';
+      for (let i = 0; i < 24; i++) {
+        const el = document.createElement('span');
+        el.className = 'confetti';
+        el.style.left = (30 + Math.random() * 40) + '%';
+        el.style.top = (35 + Math.random() * 20) + '%';
+        el.style.background = confettiColors[i % confettiColors.length];
+        el.style.animationDelay = (Math.random() * 0.3) + 's';
+        el.style.width = (6 + Math.random() * 8) + 'px';
+        el.style.height = el.style.width;
+        confettiRoot.appendChild(el);
+      }
+      setTimeout(() => confettiRoot.classList.remove('active'), 1500);
+    }
+
+    const letterSlot = document.getElementById('letterSlot');
+
+    function openEnvelope() {
+      if (opened) return;
+      opened = true;
+      scene.classList.add('opened');
+      envelope.setAttribute('aria-label', 'الظرف مفتوح');
+      letterSlot.setAttribute('aria-hidden', 'false');
+      burstConfetti();
+    }
+
+    envelope.addEventListener('click', openEnvelope);
+    envelope.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openEnvelope();
+      }
+    });
+  </script>
+</body>
+</html>
